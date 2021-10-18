@@ -24,18 +24,22 @@ public class UnprotectTermsFormatterTest {
 
     private static Stream<Arguments> terms() throws IOException {
         return Stream.of(
-                Arguments.of("", ""),
-                Arguments.of("VLSI", "{VLSI}"),
-                Arguments.of("VLsI", "VLsI"),
-                Arguments.of("VLSI", "VLSI"),
-                Arguments.of("VLSI VLSI", "{VLSI} {VLSI}"),
-                Arguments.of("BPEL", "{BPEL}"),
-                Arguments.of("3GPP 3G", "{3GPP} {3G}"),
-                Arguments.of("{A} and {B}}", "{A} and {B}}"),
-                Arguments.of("Testing BPEL Engine Performance: A Survey", "{Testing BPEL Engine Performance: A Survey}"),
-                Arguments.of("Testing BPEL Engine Performance: A Survey", "Testing {BPEL} Engine Performance: A Survey"),
-                Arguments.of("Testing BPEL Engine Performance: A Survey", "{Testing {BPEL} Engine Performance: A Survey}"),
-                Arguments.of("In CDMA", new UnprotectTermsFormatter().getExampleInput()));
+                         Arguments.of("{Aline{ e Davi}", "{Aline{ e Davi}"),
+                         Arguments.of("}Aline e Davi}", "}Aline e Davi}"),
+                         Arguments.of("Aline e Davi", "{Aline e Davi}"),
+                         Arguments.of("Aline e Davi", "Aline e Davi"),
+                         Arguments.of("", ""),
+                         Arguments.of("VLSI", "{VLSI}"),
+                         Arguments.of("VLsI", "VLsI"),
+                         Arguments.of("VLSI", "VLSI"),
+                         Arguments.of("VLSI VLSI", "{VLSI} {VLSI}"),
+                         Arguments.of("BPEL", "{BPEL}"),
+                         Arguments.of("3GPP 3G", "{3GPP} {3G}"),
+                         Arguments.of("{A} and {B}}", "{A} and {B}}"),
+                         Arguments.of("Testing BPEL Engine Performance: A Survey", "{Testing BPEL Engine Performance: A Survey}"),
+                         Arguments.of("Testing BPEL Engine Performance: A Survey", "Testing {BPEL} Engine Performance: A Survey"),
+                         Arguments.of("Testing BPEL Engine Performance: A Survey", "{Testing {BPEL} Engine Performance: A Survey}"),
+                         Arguments.of("In CDMA", new UnprotectTermsFormatter().getExampleInput()));
     }
 
     @ParameterizedTest
